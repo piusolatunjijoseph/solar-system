@@ -79,6 +79,10 @@ jobs:
             retention-days: 5
             
     docker:
+        permissions:
+          contents: read
+          packages: write
+
         name: DockerHub login
         needs: [unit-testing, code-coverage]
         runs-on: ubuntu-latest
