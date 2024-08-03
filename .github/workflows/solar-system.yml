@@ -37,14 +37,7 @@ jobs:
           with:
             name: Mocha-Test-Result
             path: test-results.xml
-          if: always() 
-          
-        - name: Archive Test Result
-          uses: actions/upload-artifact@v3
-          with:
-            name: Mocha-Test-Result
-            path: test-results.xml
-
+          if: always() # Always upload the test result
 
     code-coverage:
         name: Code Coverage
