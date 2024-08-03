@@ -17,6 +17,15 @@ jobs:
     unit-testing:
         name: Unit Testing
         runs-on: ubuntu-latest
+        services:
+          mongo-db:
+            image: mongo:latest
+            ports:
+              - 27017:27017
+            env: 
+              MONGO_URI: 'mongodb://localhost:27017/superData'
+              MONGO_USERNAME: ${{ vars.MONGO_USERNAME }}
+              MONGO_PASSWORD: ${{ secrets.MONGO_PASSWORD }}
         steps:
         - name: Checkout Repository
           uses: actions/checkout@v4
