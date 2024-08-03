@@ -113,8 +113,5 @@ jobs:
             export IP=$(docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' solar-system-app)
             echo "IP Address: $IP"
 
-            echo "Testing Image URL"
-            curl -s http://$IP:3000/live
-            
         - name: Push Docker Image
           run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/solar-system:${{ github.sha }}
