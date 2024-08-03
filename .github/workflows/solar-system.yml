@@ -30,12 +30,14 @@ jobs:
     
         - name: Unit Testing
           run: npm test
+          id: nodejs-unti-test-step
           
         - name: Archive Test Result
           uses: actions/upload-artifact@v3
           with:
             name: Mocha-Test-Result
             path: test-results.xml
+          if: steps.nodejs-unti-test-step.outcome == 'failure'
 
         - name: Archive Test Result
           uses: actions/upload-artifact@v3
